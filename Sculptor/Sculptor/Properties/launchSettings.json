@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Sculptor (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Sculptor (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Sculptor.Views.MeasurementsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Sculptor.Views"
+    xmlns:vm="using:Sculptor.ViewModels"
+    xmlns:models="using:Sculptor.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <vm:MeasurementsViewModel/>
+    </Page.DataContext>
+
+    <Grid>
+        <ScrollViewer>
+            <StackPanel Padding="20">
+                <TextBlock Text="Saisie des mesures" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
+
+                <!-- Unités -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Unités :" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <ComboBox SelectedIndex="{Binding SelectedUnitIndex, Mode=TwoWay}">
+                        <ComboBoxItem Content="Métrique (cm, kg)"/>
+                        <ComboBoxItem Content="Impérial (inches, lbs)"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <!-- Mesures générales -->
+                <TextBlock Text="Mesures générales" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                <StackPanel>
+                    <TextBox Header="Taille" Text="{Binding Height, Mode=TwoWay}" Margin="0,5"/>
+                    <TextBox Header="Poids" Text="{Binding Weight, Mode=TwoWay}" Margin="0,5"/>
+                </StackPanel>
+
+                <!-- Haut du corps -->
+                <TextBlock Text="Haut du corps" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                <StackPanel>
+                    <TextBox Header="Cou" Text="{Binding Neck, Mode=TwoWay}" Margin="0,5"/>
+                    <TextBox Header="Épaules" Text="{Binding Shoulders, Mode=TwoWay}" Margin="0,5"/>
+                    <TextBox Header="Poitrine" Text="{Binding Chest, Mode=TwoWay}" Margin="0,5"/>
+                    <TextBox Header="Abdomen" Text="{Binding Abdomen, Mode=TwoWay}" Margin="0,5"/>
+                    <TextBox Header="Taille" Text="{Binding Waist, Mode=TwoWay}" Margin="0,5"/>
+                    <TextBox Header="Hanches" Text="{Binding Hips, Mode=TwoWay}" Margin="0,5"/>
+                </StackPanel>
+
+                <!-- Bras droit -->
+                <TextBlock Text="Bras droit" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                <StackPanel>
+                    <TextBox Header="Bras" Text="{Binding RightArm, Mode=TwoWay}" Margin="0,5"/>
+                    <TextBox Header="Avant-bras" Text="{Binding RightForearm, Mode=TwoWay}" Margin="0,5"/>
+                    <TextBox Header="Poignet" Text="{Binding RightWrist, Mode=TwoWay}" Margin="0,5"/>
+                </StackPanel>
+
+                <!-- Bras gauche -->
+                <TextBlock Text="Bras gauche" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                <StackPanel>
+                    <TextBox Header="Bras" Text="{Binding LeftArm, Mode=TwoWay}" Margin="0,5"/>
+                    <TextBox Header="Avant-bras" Text="{Binding LeftForearm, Mode=TwoWay}" Margin="0,5"/>
+                    <TextBox Header="Poignet" Text="{Binding LeftWrist, Mode=TwoWay}" Margin="0,5"/>
+                </StackPanel>
+
+                <!-- Jambes droite et gauche (ajoutez les TextBoxes correspondants) -->
+
+                <!-- Bouton Enregistrer -->
+                <Button Content="Enregistrer les mesures" Command="{Binding SaveCommand}" Margin="0,20,0,0" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Sculptor.Views.ActivitiesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Sculptor.Views"
+    xmlns:vm="using:Sculptor.ViewModels"
+    xmlns:models="using:Sculptor.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
+    <Page.DataContext>
+        <vm:ActivitiesViewModel/>
+    </Page.DataContext>
+
+    <Grid Padding="20">
+        <StackPanel>
+            <TextBlock Text="Activités" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
+            <!-- Formulaire pour ajouter une nouvelle activité -->
+            <StackPanel Orientation="Vertical" Margin="0,0,0,20">
+                <TextBox Header="Nom de l'activité" Text="{Binding NewActivityName, Mode=TwoWay}" Margin="0,5"/>
+                <TextBox Header="Durée (minutes)" Text="{Binding NewActivityDuration, Mode=TwoWay}" Margin="0,5"/>
+                <TextBox Header="Calories brûlées" Text="{Binding NewActivityCalories, Mode=TwoWay}" Margin="0,5"/>
+                <Button Content="Ajouter l'activité" Command="{Binding AddActivityCommand}" Margin="0,10,0,0" HorizontalAlignment="Left"/>
+            </StackPanel>
+
+            <!-- Liste des activités enregistrées -->
+            <TextBlock Text="Historique des activités" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+            <ListView ItemsSource="{Binding Activities}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:ActivityEntry">
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Text="{x:Bind DateFormatted}" Width="150"/>
+                            <TextBlock Text="{x:Bind ActivityName}" Width="200"/>
+                            <TextBlock Text="Durée : " />
+                            <TextBlock Text="{x:Bind DurationMinutes}" Width="80"/>
+                            <TextBlock Text="min" Margin="0,0,10,0"/>
+                            <TextBlock Text="Calories : " />
+                            <TextBlock Text="{x:Bind CaloriesBurned}" Width="80"/>
+                            <TextBlock Text="kcal"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Page>
